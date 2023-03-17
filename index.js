@@ -1,6 +1,7 @@
 const http = require("http");
 const fs = require("fs");
 const port = 3000;
+
 http
   .createServer((req, res) => {
     console.log(req.url);
@@ -36,16 +37,16 @@ http
         }
       });
     } else if (req.url == "/css") {
-        res.sendFile(path.join(__dirname, "stylesheet", "styles.css"));
-        console.log(req.url);
-        if (err) {
-          console.error(err);
-        } else {
-          res.writeHead(200, { "Content-Type": "styles.css" });
-          res.write(data);
-          res.end();
-          console.log(data);
-        };
+      res.sendFile(path.join(__dirname, "stylesheet", "styles.css"));
+      console.log(req.url);
+      if (err) {
+        console.error(err);
+      } else {
+        res.writeHead(200, { "Content-Type": "styles.css" });
+        res.write(data);
+        res.end();
+        console.log(data);
+      }
     } else if (req.url == "/img") {
       fs.readFile("img1.jpeg", (err, data) => {
         console.log(req.url);

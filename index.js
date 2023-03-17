@@ -67,7 +67,8 @@ http
         }
       });
     } else if (req.url == "/css") {
-      fs.readFile("styles.css", "utf-8", (err, data) => {
+      server.get("/css", (req, res) => {
+        res.sendFile(path.join(__dirname, "stylesheet", "styles.css"));
         console.log(req.url);
         if (err) {
           console.error(err);
@@ -78,8 +79,7 @@ http
           console.log(data);
         }
       });
-    }
-    else if (req.url == "/img") {
+    } else if (req.url == "/img") {
       fs.readFile("img1.jpeg", (err, data) => {
         console.log(req.url);
         if (err) {
